@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="css/style.css">
+<head>
+    <script src="js/pesquisaController.js"></script>
+    <meta charset="UTF-8">
+    <title>Pesquisa por filmes</title>
+</head>
+<body>
+<h1>Pesquisa por filmes</h1>
+<p><input type="text" id="pesquisa" placeholder="Pesquisar por palavra"></p>
+<p><button onclick="pesquisarFilmes()">Pesquisar</button></p>
+<hr>
+<p><input type="text" id="genero" placeholder="Pesquisar por gênero"></p>
+<p><button onclick="pesquisarGenero()">Pesquisar</button></p>
+<hr>
+
+<table id="tabela" border="1">
+    <thead><td>Título</td><td>Lançamento</td><td>Gênero</td></thead>
+    <tbody id="resultado">
+
+    </tbody>
+</table>
+<div id="posterModal" style="
+display:none;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0.8,0.8,0.8,0.8);
+text-align:center;
+">
+
+<span onclick="fecharPoster()" style="
+color:white;
+font-size:40px;
+cursor:pointer;
+position:absolute;
+right:30px;
+top:20px;
+">X</span>
+
+    <img id="posterGrande" style="
+max-width:80%;
+margin-top:50px;
+">
+
+</div>
+</body>
+</html>

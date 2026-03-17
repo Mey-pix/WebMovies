@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="css/style.css">
+<head>
+    <script src="js/cadastroController.js"></script>
+    <meta charset="UTF-8">
+    <title>Cadastro de FilmesTitle</title>
+</head>
+<body>
+<h1>Cadastro de Filmes</h1>
+<hr>
+<form method="post" enctype="multipart/form-data">
+    <p><label for="titulo">Titulo:</label>
+        <input type="text" name="titulo" id="titulo" placeholder="Digite o título do filme"></p>
+    <p><label for="ano">Ano:</label>
+        <input type="number" name="ano" id="ano" placeholder="Ano de lançamento"></p>
+    <p><label for="genero">Gênero:</label>
+        <select name="genero" id="genero">
+            <option value="">Carregando gêneros</option>
+        </select>
+    <p><label for="poster">Poster do Filme (opcional):</label>
+        <input type="file" name="poster" id="poster" ></p>
+</form>
+<button onclick="cadastrarFilmePoster()">Cadastrar Filme</button>
+<script>
+    async function CarregarGeneros(){
+        const response = await fetch("apis/get-generos");
+        const generos = await response.json();
+        const select = document.getElementById("genero");
+        select.innerHTML="<option value=''>Selecione um gênero</option>"
+        generos.forEach(g=>{
+            const option = document.createElement("option");
+            option.value = g.genero;
+            option.textContent = g.genero;
+            select.appendChild(option);
+        });
+    }
+    window.onload=CarregarGeneros;
+</script>
+
+</body>
+</html>
